@@ -27,6 +27,7 @@ public class CommBase {
 	private boolean isActif = false;
 	private String host = "localhost";
 	private int port = 10000;
+	private Socket socket = null;
 
 	/**
 	 * Constructeur
@@ -60,6 +61,12 @@ public class CommBase {
 		if (threadComm != null)
 			threadComm.cancel(true);
 		isActif = false;
+		try {
+			socket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -69,11 +76,12 @@ public class CommBase {
 
 		// Crée un fil d'exécusion parallèle au fil courant,
 		threadComm = new SwingWorker() {
+			
 
 			@Override
 			protected Object doInBackground() throws Exception {
 				System.out.println("Le fils d'execution parallele est lance");
-				Socket socket = null;
+				
 				String ligne = null;
 				Boolean bool = true;
 				try {
@@ -97,14 +105,10 @@ public class CommBase {
 
 					out.write("GET\n");
 					out.flush();
+					in.readLine();    //Permet de sauter la ligne <commande/>
 					ligne = in.readLine();
-
-					// C'EST ICI QUE L'ON V�RIFIE SI LA LIGNE EST BONNE
-					if (ligne.charAt(0) == 'c') {
-						bool = false;
-					} else {
-						bool = true;
-					}
+					
+					System.out.println(ligne);
 
 					// La méthode suivante alerte l'observateur
 					if (listener != null && bool)

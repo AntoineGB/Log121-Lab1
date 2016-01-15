@@ -6,6 +6,13 @@ import java.util.regex.*;
 public class CreateurForme {
 
 	
+	/**
+	 *  Sépare la ligne reçus du serveur pour construire une forme avec les données qu'elle contient
+	 * @param s
+	 * 			String contenat la ligne reçus du serveur
+	 * @return
+	 * 			Retourne un nouvelle forme
+	 */
 	public Formes decryptage(String s){
 		String[] tabString;
 		String sTemporaire;
@@ -14,53 +21,25 @@ public class CreateurForme {
 		tabString=s.split(" ");
 	
 		sTemporaire=tabString[1];
-		if(sTemporaire.equalsIgnoreCase("<CARRE>")){
-			String[] tabStringTempo={tabString[2], tabString[3],tabString[4],tabString[5]};
-			f=CreationCarre(tabStringTempo);
-		}
-		if(sTemporaire.equalsIgnoreCase("<RECTANGLE>")){
-			String[] tabStringTempo={tabString[2], tabString[3],tabString[4],tabString[5]};
-			f=CreationRectangle(tabStringTempo);
-		}
 		if(sTemporaire.equalsIgnoreCase("<CERCLE>")){
-			String[] tabStringTempo={tabString[2], tabString[3],tabString[4]};
-			f=CreationCercle(tabStringTempo);
+			int[] tabIntDonne={Integer.parseInt(tabString[2]), Integer.parseInt(tabString[3]),Integer.parseInt(tabString[4])};
+		}else{
+			int[] tabIntDonne={Integer.parseInt(tabString[2]), Integer.parseInt(tabString[3]),Integer.parseInt(tabString[4]),Integer.parseInt(tabString[5])};
 		}
-		if(sTemporaire.equalsIgnoreCase("<OVALE>")){
-			String[] tabStringTempo={tabString[2], tabString[3],tabString[4],tabString[5]};
-			f=CreationOvale(tabStringTempo);
-		}
-		if(sTemporaire.equalsIgnoreCase("<LIGNE>")){
-			String[] tabStringTempo={tabString[2], tabString[3],tabString[4],tabString[5]};
-			f=CreationLigne(tabStringTempo);
+		switch(sTemporaire){
+		case "<CARRE>":
+			break;
+		case "<RECTANGLE>":
+			break;
+		case "<OVALE>":
+			break;
+		case "<LIGNE>":
+			break;
+		case "<CERCLE>":
+			break;
 		}
 		
 		return f;
 		
 	}
-	private Formes CreationLigne(String[] tabStringTempo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private Formes CreationOvale(String[] tabStringTempo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private Formes CreationCercle(String[] tabStringTempo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private Formes CreationRectangle(String[] tabStringTempo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private Formes CreationCarre(String[] tabStringTempo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

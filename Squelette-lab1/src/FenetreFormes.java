@@ -60,15 +60,21 @@ public class FenetreFormes extends JComponent {
 		return dimension;
 	}
 
+	/**
+	 *  Rajoute une nouvelle fomre dans le tableau.  Si le tableau est remplit, il suprimme la première forme dans le tableau
+	 *  et rajoute la nouvelle forme à la fin du tableau
+	 * @param forme
+	 * 				Nouvelle forme a rajouter dans le tableau
+	 */
 	public void ajouterForme(Formes forme) {
 		if (tabFormes[9] != null) {
-			for (int i = 1; i <= 9; i++) {
+			for (int i = 1; i <tabFormes.length; i++) {
 				tabFormes[i - 1] = tabFormes[i];
 			}
 			tabFormes[9] = forme;
 		} else {
 			boolean bool = true;
-			for (int i = 0; i <= 9; i++) {
+			for (int i = 0; i <tabFormes.length; i++) {
 				if (tabFormes[i] == null && bool) {
 					tabFormes[i] = forme;
 					bool = false;
@@ -77,8 +83,11 @@ public class FenetreFormes extends JComponent {
 		}
 	}
 
+	/**
+	 *  Vide le tableau de formes
+	 */
 	public void reset() {
-		for (int i = 0; i <= 9; i++) {
+		for (int i = 0; i <tabFormes.length; i++) {
 			tabFormes[i] = null;
 		}
 	}
