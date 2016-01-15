@@ -81,7 +81,7 @@ public class MenuFenetre extends JMenuBar{
 			public void actionPerformed(ActionEvent arg0) {
 			comm.stop();
 			rafraichirMenus();
-			fenetrePrincipale.getFenetreFormes().reset();
+			fenetrePrincipale.fermerServeur();
 		    }
 	    });
 		
